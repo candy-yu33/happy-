@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+    background: radial-gradient(220% 105% at top center, #01040d 35%, #191970 60%, #e96f92 85%, red);
+    background-attachment: fixed;
+    overflow: hidden;
+}
+ 
+@keyframes rotate {
+    0% {
+        transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+    }
+ 
+    100% {
+        transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+    }
+}
+   .love {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #000;
+}
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.stars {
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+    position: absolute;
+    bottom: 0;
+    perspective-origin: 50% 100%;
+    left: 50%;
+    animation: rotate 90s infinite linear;
+}
+ 
+.star {
+    width: 2px;
+    height: 2px;
+    background: #F7F7B6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0 -300px;
+    transform: translate3d(0, 0, -300px);
+    backface-visibility: hidden;
+}
+.moon {
+    position: absolute;
+    z-index: -1;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(220% 105% at top center,#EEEE00 10%,#DDAA00 ,#ffff33 70%,#DDAA00 85%,#EEEE00);
+    box-shadow: 0 0 60px 40px rgba(255,300,255,0.2),inset 0 0 20px 5px rgba(255,0,255,0.1);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: moon-move 200s linear infinite alternate;
+}
+.moon-shadow {
+    width: 5vw;
+    height: 3vw;
+    border-radius: 100%;
+    position: absolute;
+    top: 3vw;
+    left: 2.6vw;
+    background: linear-gradient(51deg, #e4e0b7, #e4e0b7, #eae895, #feff7f, #fefec6);
+}
+ 
+#moonShadow {
+    filter: url(#filter);
+}
+			.kmd {
+    width: 100%;
+}
+ 
+ 
+.kongmingdeng, .kongmingdeng-little {
+    position: absolute;
+    height: 5.1vw;
+    width: 3.5vw;
+    bottom: -8vw;
+    background: linear-gradient(#92090e, #ea3d2d, #fbf885);
+    animation: FlyOne 24s linear infinite;
+}
+ 
+ 
+.kmdleft {
+    border-left: 5vw solid transparent;
+    border-right: 1vw solid transparent;
+    border-bottom: 0.9vw solid #ea4c35;
+    transform: rotate(-90deg);
+    position: relative;
+    top: 2.5vw;
+    left: -3.4vw;
+}
+ 
+.kmdright {
+    border-left: 1vw solid transparent;
+    border-right: 5vw solid transparent;
+    border-bottom: 0.9vw solid #ea4c35;
+    transform: rotate(90deg);
+    position: relative;
+    top: 1.6vw;
+    left: 0.9vw;
+}
+ 
+.kmdbottom {
+    position: relative;
+    top: 3vw;
+    width: 3.5vw;
+    height: 1.2vw;
+    background: radial-gradient(#fff, #fbf885, #ea3d2d);
+    border-radius: 5vw;
+}
+ 
+.kongmingdeng {
+    z-index: 2;
+}
+ 
+.kongmingdeng:nth-child(2), .kongmingdeng:nth-child(3) {
+        animation: FlyThree 18s linear infinite;
+        animation-delay: 6s;
+        height: 3.7vw;
+        left: 5vw;
+        width: 2.5vw;
+        bottom: -10vw;
+    }
+ 
+    .kongmingdeng:nth-child(2) {
+        bottom: -7vw;
+        left: 2vw;
+        animation: FlyTwo 16s linear infinite;
+        animation-delay: 2s;
+    }
+ 
+        .kongmingdeng:nth-child(2) .kmdleft, .kongmingdeng:nth-child(3) .kmdleft {
+            border-left: 3vw solid transparent;
+            top: 1.5vw;
+            left: -2.4vw;
+        }
+ 
+        .kongmingdeng:nth-child(2) .kmdright, .kongmingdeng:nth-child(3) .kmdright {
+            border-right: 3vw solid transparent;
+            top: 0.6vw;
+            left: 0.9vw;
+        }
+ 
+        .kongmingdeng:nth-child(2) .kmdbottom, .kongmingdeng:nth-child(3) .kmdbottom {
+            top: 1.6vw;
+            height: 1vw;
+            width: 2.5vw;
+        }
+ 
+.kongmingdeng-little {
+    height: 2vw;
+    left: 5vw;
+    width: 1.2vw;
+    bottom: 5vw;
+    animation: FlyFour 18s linear infinite;
+}
+ 
+    .kongmingdeng-little .kmdleft {
+        border-left: 1.7vw solid transparent;
+        border-right: 0.3vw solid transparent;
+        border-bottom: 0.5vw solid #ea4c35;
+        top: 0.75vw;
+        left: -1.2vw;
+    }
+ 
+    .kongmingdeng-little .kmdright {
+        border-left: 0.3vw solid transparent;
+        border-right: 1.7vw solid transparent;
+        border-bottom: 0.5vw solid #ea4c35;
+        top: 0.26vw;
+        left: 0.4vw;
+    }
+ 
+    .kongmingdeng-little .kmdbottom {
+        top: 0.6vw;
+        width: 1.2vw;
+        height: 0.5vw;
+    }
+ 
+@keyframes FlyOne {
+    10% {
+        transform: translateX(7vw) translateY(-10vh) rotate(0deg);
+    }
+ 
+    40% {
+        transform: translateX(2vw) translateY(-30vh) rotate(5deg);
+    }
+ 
+    70% {
+        transform: translateX(10vw) translateY(-70vh) rotate(-5deg);
+    }
+ 
+    100% {
+        transform: translateX(3vw) translateY(-120vh) rotate(3deg);
+    }
+}
+ 
+@keyframes FlyTwo {
+    10% {
+        transform: translateX(2vw) translateY(-15vh) rotate(0deg);
+    }
+ 
+    40% {
+        transform: translateX(10vw) translateY(-60vh) rotate(5deg);
+    }
+ 
+    70% {
+        transform: translateX(3vw) translateY(-90vh) rotate(-5deg);
+    }
+ 
+    100% {
+        transform: translateX(12vw) translateY(-100vh) rotate(3deg);
+        opacity: 0.1;
+    }
+}
+ 
+@keyframes FlyThree {
+    10% {
+        transform: translateX(7vw) translateY(-30vh) rotate(0deg);
+        opacity: 1;
+    }
+ 
+    40% {
+        transform: translateX(1vw) translateY(-60vh) rotate(8deg);
+        opacity: 0.9;
+    }
+ 
+    70% {
+        transform: translateX(9vw) translateY(-80vh) rotate(-8deg);
+        opacity: 0.8;
+    }
+ 
+    100% {
+        transform: translateX(18vw) translateY(-100vh) rotate(3deg);
+        opacity: 0.1;
+    }
+}
+ 
+@keyframes FlyFour {
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0.8;
+    }
+}
+        .zhufu {
+            width: 800px;
+           text-align: center;
+        }
+ 
+        .zhufu_box {
+            z-index: 5;
+            border-radius: 10px;
+            color: floralwhite;
+            cursor: pointer;
+            display: table-cell;
+            float: right;
+            font-family: "Zeyada";
+            margin-left: 20px;
+            /*transition: text-shadow 0.5s ease 0s;*/
+            padding: 45px 25px;
+            margin-top: 20px;
+            text-align: center;
+            text-shadow: 0 0 15px red, 0 0 20px #000d24, 0 0 30px #000d24, 0 0 40px #0043b2, 0 0 60px #0043b2, 0 0 50px red, 0 0 20px #ffffff;
+            width: 270px;
+            /*border-style: dotted solid ;*/
+ 
+        }
+ 
+            /*.zhufu_box:hover {
+                text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FFFF00, 0 0 70px #FFFF00, 0 0 80px #FFFF00, 0 0 100px #FFFF00;
+            }*/
+
+
+
+		</style>
+	</head>
+	<body>
+		<div class="stars"></div>
+		<div class="moon"></div>
+		        <div class="moon">
+            <div class="moon-shadow" id="moonShadow"></div>
+            <svg width="0" height="0">
+                <filter id="filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.034" numOctaves="4" seed="0" />
+                    <feDisplacementMap in="SourceGraphic" scale="150" />
+                </filter>
+            </svg>
+        </div>
+         <div class="kmd" id="kmd">
+            <div class="kongmingdeng">
+                <div class="kmdleft"> </div>
+                <div class="kmdright"> </div>
+                <div class="kmdbottom"> </div>
+            </div>
+ 
+            <div class="kongmingdeng-little">
+                <div class="kmdleft"> </div>
+                <div class="kmdright"> </div>
+                <div class="kmdbottom"> </div>
+            </div>
+        </div>
+                <div class="zhufu">
+            <div class="zhufu_box">
+               
+                <br /><br /><br><br><br>
+               <br /><br />
+                中秋佳节！愿在这温馨的日子里，你的笑容如月饼般甜蜜，生活像这明月一般，光明圆满，快乐无限！愿你中秋快乐，幸福的如月饼一般可爱！希望予泽每天都能开开心心，予籽会一直陪着你的！！那就让祝福随孔明灯飘向遥远的星空，最终带到你的身边吧！
+            </div>
+        </div>
+		<script src="jquery-3.7.1.min.js"></script>
+		<div class="love">
+			 <canvas id="pinkboard"></canvas>
+  <script>
+  /*
+ * Settings
+ */
+var settings = {
+  particles: {
+    length:   500, // maximum amount of particles
+    duration:   2, // particle duration in sec
+    velocity: 100, // particle velocity in pixels/sec
+    effect: -0.75, // play with this for a nice effect
+    size:      30, // particle size in pixels
+  },
+};
+
+/*
+ * RequestAnimationFrame polyfill by Erik Möller
+ */
+(function(){var b=0;var c=["ms","moz","webkit","o"];for(var a=0;a<c.length&&!window.requestAnimationFrame;++a){window.requestAnimationFrame=window[c[a]+"RequestAnimationFrame"];window.cancelAnimationFrame=window[c[a]+"CancelAnimationFrame"]||window[c[a]+"CancelRequestAnimationFrame"]}if(!window.requestAnimationFrame){window.requestAnimationFrame=function(h,e){var d=new Date().getTime();var f=Math.max(0,16-(d-b));var g=window.setTimeout(function(){h(d+f)},f);b=d+f;return g}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame=function(d){clearTimeout(d)}}}());
+
+/*
+ * Point class
+ */
+var Point = (function() {
+  function Point(x, y) {
+    this.x = (typeof x !== 'undefined') ? x : 0;
+    this.y = (typeof y !== 'undefined') ? y : 0;
+  }
+  Point.prototype.clone = function() {
+    return new Point(this.x, this.y);
+  };
+  Point.prototype.length = function(length) {
+    if (typeof length == 'undefined')
+      return Math.sqrt(this.x * this.x + this.y * this.y);
+    this.normalize();
+    this.x *= length;
+    this.y *= length;
+    return this;
+  };
+  Point.prototype.normalize = function() {
+    var length = this.length();
+    this.x /= length;
+    this.y /= length;
+    return this;
+  };
+  return Point;
+})();
+
+/*
+ * Particle class
+ */
+var Particle = (function() {
+  function Particle() {
+    this.position = new Point();
+    this.velocity = new Point();
+    this.acceleration = new Point();
+    this.age = 0;
+  }
+  Particle.prototype.initialize = function(x, y, dx, dy) {
+    this.position.x = x;
+    this.position.y = y;
+    this.velocity.x = dx;
+    this.velocity.y = dy;
+    this.acceleration.x = dx * settings.particles.effect;
+    this.acceleration.y = dy * settings.particles.effect;
+    this.age = 0;
+  };
+  Particle.prototype.update = function(deltaTime) {
+    this.position.x += this.velocity.x * deltaTime;
+    this.position.y += this.velocity.y * deltaTime;
+    this.velocity.x += this.acceleration.x * deltaTime;
+    this.velocity.y += this.acceleration.y * deltaTime;
+    this.age += deltaTime;
+  };
+  Particle.prototype.draw = function(context, image) {
+    function ease(t) {
+      return (--t) * t * t + 1;
+    }
+    var size = image.width * ease(this.age / settings.particles.duration);
+    context.globalAlpha = 1 - this.age / settings.particles.duration;
+    context.drawImage(image, this.position.x - size / 2, this.position.y - size / 2, size, size);
+  };
+  return Particle;
+})();
+
+/*
+ * ParticlePool class
+ */
+var ParticlePool = (function() {
+  var particles,
+      firstActive = 0,
+      firstFree   = 0,
+      duration    = settings.particles.duration;
+  
+  function ParticlePool(length) {
+    // create and populate particle pool
+    particles = new Array(length);
+    for (var i = 0; i < particles.length; i++)
+      particles[i] = new Particle();
+  }
+  ParticlePool.prototype.add = function(x, y, dx, dy) {
+    particles[firstFree].initialize(x, y, dx, dy);
+    
+    // handle circular queue
+    firstFree++;
+    if (firstFree   == particles.length) firstFree   = 0;
+    if (firstActive == firstFree       ) firstActive++;
+    if (firstActive == particles.length) firstActive = 0;
+  };
+  ParticlePool.prototype.update = function(deltaTime) {
+    var i;
+    
+    // update active particles
+    if (firstActive < firstFree) {
+      for (i = firstActive; i < firstFree; i++)
+        particles[i].update(deltaTime);
+    }
+    if (firstFree < firstActive) {
+      for (i = firstActive; i < particles.length; i++)
+        particles[i].update(deltaTime);
+      for (i = 0; i < firstFree; i++)
+        particles[i].update(deltaTime);
+    }
+    
+    // remove inactive particles
+    while (particles[firstActive].age >= duration && firstActive != firstFree) {
+      firstActive++;
+      if (firstActive == particles.length) firstActive = 0;
+    }
+    
+    
+  };
+  ParticlePool.prototype.draw = function(context, image) {
+    // draw active particles
+    if (firstActive < firstFree) {
+      for (i = firstActive; i < firstFree; i++)
+        particles[i].draw(context, image);
+    }
+    if (firstFree < firstActive) {
+      for (i = firstActive; i < particles.length; i++)
+        particles[i].draw(context, image);
+      for (i = 0; i < firstFree; i++)
+        particles[i].draw(context, image);
+    }
+  };
+  return ParticlePool;
+})();
+
+/*
+ * Putting it all together
+ */
+(function(canvas) {
+  var context = canvas.getContext('2d'),
+      particles = new ParticlePool(settings.particles.length),
+      particleRate = settings.particles.length / settings.particles.duration, // particles/sec
+      time;
+  
+  // get point on heart with -PI <= t <= PI
+  function pointOnHeart(t) {
+    return new Point(
+      160 * Math.pow(Math.sin(t), 3),
+      130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25
+    );
+  }
+  
+  // creating the particle image using a dummy canvas
+  var image = (function() {
+    var canvas  = document.createElement('canvas'),
+        context = canvas.getContext('2d');
+    canvas.width  = settings.particles.size;
+    canvas.height = settings.particles.size;
+    // helper function to create the path
+    function to(t) {
+      var point = pointOnHeart(t);
+      point.x = settings.particles.size / 2 + point.x * settings.particles.size / 350;
+      point.y = settings.particles.size / 2 - point.y * settings.particles.size / 350;
+      return point;
+    }
+    // create the path
+    context.beginPath();
+    var t = -Math.PI;
+    var point = to(t);
+    context.moveTo(point.x, point.y);
+    while (t < Math.PI) {
+      t += 0.01; // baby steps!
+      point = to(t);
+      context.lineTo(point.x, point.y);
+    }
+    context.closePath();
+    // create the fill
+    context.fillStyle = '#ea80b0';
+    context.fill();
+    // create the image
+    var image = new Image();
+    image.src = canvas.toDataURL();
+    return image;
+  })();
+  
+  // render that thing!
+  function render() {
+    // next animation frame
+    requestAnimationFrame(render);
+    
+    // update time
+    var newTime   = new Date().getTime() / 1000,
+        deltaTime = newTime - (time || newTime);
+    time = newTime;
+    
+    // clear canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // create new particles
+    var amount = particleRate * deltaTime;
+    for (var i = 0; i < amount; i++) {
+      var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
+      var dir = pos.clone().length(settings.particles.velocity);
+      particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
+    }
+    
+    // update and draw particles
+    particles.update(deltaTime);
+    particles.draw(context, image);
+  }
+  
+  // handle (re-)sizing of the canvas
+  function onResize() {
+    canvas.width  = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+  window.onresize = onResize;
+  
+  // delay rendering bootstrap
+  setTimeout(function() {
+    onResize();
+    render();
+  }, 10);
+})(document.getElementById('pinkboard'));
+  </script>
+		</div>
+	</body>
+</html>
